@@ -23,7 +23,7 @@ jobs:
       - run: npx changeset status --since=origin/main
 
   version-or-publish:
-    if: github.ref == 'refs/heads/main'
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
