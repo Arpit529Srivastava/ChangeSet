@@ -1,5 +1,8 @@
 name: Changesets
-
+# This workflow is used to manage changesets for the project.
+# It is used to create a new version of the project and publish it to the npm registry.
+# It is also used to create a new version of the project and publish it to the npm registry.
+# It is also used to create a new version of the project and publish it to the npm registry.
 on:
   pull_request:
     branches: [main]
