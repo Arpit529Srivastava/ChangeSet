@@ -56,7 +56,12 @@ jobs:
             return changesetContents;
 
       - name: Create changeset file
-        run: "echo -e '${{ steps.get_changeset_contents.outputs.result }}' > .changeset/${{ github.event.pull_request.number }}.md"
+        run: |
+          if [ -z "${{ steps.get_changeset_contents.outputs.result }}" ] || [ "${{ steps.get_changeset_contents.outputs.result }}" = "null" ]; then
+            echo "Error: Invalid changeset content generated"
+            exit 1
+          fi
+          echo '${{ steps.get_changeset_contents.outputs.result }}' > .changeset/${{ github.event.pull_request.number }}.md
 
       - name: Commit changeset file
         run: |
