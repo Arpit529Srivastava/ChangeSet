@@ -1,0 +1,8 @@
+node_modules/
+dist/
+*.log
+# Go
+/packages/go-demo/bin/
+/packages/go-demo/pkg/
+/packages/go-demo/*.exe
+/packages/go-demo/*.out 

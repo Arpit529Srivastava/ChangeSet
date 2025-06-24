@@ -1,0 +1,10 @@
+{
+  "name": "changeset-demo-monorepo",
+  "private": true,
+  "workspaces": [
+    "packages/ts-demo"
+  ],
+  "devDependencies": {
+    "@changesets/cli": "^2.29.5"
+  }
+}
