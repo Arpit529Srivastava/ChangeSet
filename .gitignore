@@ -6,3 +6,5 @@ dist/
 /packages/go-demo/pkg/
 /packages/go-demo/*.exe
 /packages/go-demo/*.out 
+backend/.env
+.next/
