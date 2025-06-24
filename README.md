@@ -1,13 +1,23 @@
 # ChangeSet Demo
 
-A full-stack demo application showcasing version management with ChangeSet, featuring a Next.js frontend and Go backend for email functionality.
+A full-stack demo application showcasing version management with ChangeSet, featuring a Next.js frontend with Three.js 3D effects and an enhanced Go backend for email functionality.
 
 ## 🚀 Features
 
-- **Frontend**: Modern Next.js 14 application with TypeScript and Tailwind CSS
-- **Backend**: Go REST API for email sending with SMTP integration
+- **Frontend**: Modern Next.js 14 application with TypeScript, Tailwind CSS, and Three.js 3D background
+- **3D Effects**: Animated floating particles with Three.js and React Three Fiber
+- **Enhanced UI**: Glass morphism effects, smooth animations, and responsive design
+- **Backend**: Enhanced Go REST API with monitoring, rate limiting, and comprehensive logging
 - **Version Management**: Automated versioning and publishing with ChangeSet
 - **CI/CD**: GitHub Actions workflows for automated testing and deployment
+
+## 🎨 UI Enhancements
+
+- **Animated Background**: Dynamic gradient backgrounds with smooth color transitions
+- **3D Particle System**: Interactive Three.js particle background with auto-rotation
+- **Glass Morphism**: Modern glass-effect components with backdrop blur
+- **Smooth Animations**: Framer Motion animations for enhanced user experience
+- **Responsive Design**: Optimized for all device sizes
 
 ## 📁 Project Structure
 
@@ -15,9 +25,12 @@ A full-stack demo application showcasing version management with ChangeSet, feat
 ChangeSet/
 ├── src/                    # Next.js frontend source
 │   ├── app/               # App Router pages and API routes
+│   ├── components/        # React components including Three.js
+│   │   ├── ThreeBackground.tsx
+│   │   └── ThreeScene.tsx
 │   └── ...
-├── backend/               # Go backend service
-│   ├── main.go           # Main server file
+├── backend/               # Enhanced Go backend service
+│   ├── main.go           # Main server file with new features
 │   ├── go.mod            # Go module file
 │   └── README.md         # Backend documentation
 ├── .github/              # GitHub Actions workflows
@@ -28,7 +41,7 @@ ChangeSet/
 
 ## 🛠️ Setup
 
-### Frontend (Next.js)
+### Frontend (Next.js + Three.js)
 
 1. Install dependencies:
 ```bash
@@ -42,7 +55,7 @@ npm run dev
 
 3. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-### Backend (Go)
+### Backend (Enhanced Go)
 
 1. Navigate to backend directory:
 ```bash
@@ -75,7 +88,16 @@ The backend will run on `http://localhost:8080`.
 
 ### Email Service
 
-The backend includes a mock email service for development. If SMTP configuration is not provided, emails will be logged instead of actually sent.
+The enhanced backend includes an improved mock email service for development. If SMTP configuration is not provided, emails will be logged with detailed statistics instead of actually sent.
+
+### New Backend Features
+
+- **Health Monitoring**: `/health` endpoint with service status
+- **Statistics**: `/stats` endpoint for email metrics
+- **Rate Limiting**: 5-second cooldown between requests
+- **Enhanced Logging**: Detailed request/response timing
+- **API Versioning**: Support for versioned endpoints
+- **Better Error Handling**: Comprehensive error responses
 
 ### Environment Variables
 
@@ -111,10 +133,12 @@ GitHub Actions workflows are configured for:
 
 ## 📝 API Endpoints
 
-### Backend API
+### Enhanced Backend API
 
-- `GET /health` - Health check
-- `POST /send-email` - Send email
+- `GET /health` - Health check with service status
+- `GET /stats` - Email statistics and server metrics
+- `POST /send-email` - Send email (legacy endpoint)
+- `POST /api/v1/email` - Send email (versioned endpoint)
 
 ### Frontend API
 
@@ -122,16 +146,27 @@ GitHub Actions workflows are configured for:
 
 ## 🎨 UI Features
 
-- Modern, responsive design with Tailwind CSS
-- Form validation and error handling
-- Loading states and success/error feedback
-- Beautiful gradient backgrounds and smooth animations
+- **Three.js 3D Background**: Animated particle system with auto-rotation
+- **Glass Morphism**: Modern glass-effect components with backdrop blur
+- **Animated Gradients**: Dynamic background colors with smooth transitions
+- **Framer Motion**: Smooth animations and micro-interactions
+- **Responsive Design**: Optimized for mobile, tablet, and desktop
+- **Form Validation**: Real-time validation with error handling
+- **Loading States**: Beautiful loading animations and feedback
 
 ## 🔒 Security
 
-- CORS configuration for frontend-backend communication
-- Environment variable management for sensitive data
-- Input validation on both frontend and backend
+- **Rate Limiting**: Prevents abuse with 5-second cooldown
+- **CORS Configuration**: Secure frontend-backend communication
+- **Input Validation**: Comprehensive validation on both frontend and backend
+- **Environment Variable Management**: Secure handling of sensitive data
+
+## 🚀 Performance
+
+- **Optimized 3D Rendering**: Efficient Three.js implementation
+- **Lazy Loading**: Components load only when needed
+- **Minimal Bundle Size**: Optimized dependencies and imports
+- **Fast Backend**: Efficient Go implementation with minimal overhead
 
 ## 📄 License
 
