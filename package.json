@@ -1,10 +1,29 @@
 {
-  "name": "changeset-demo-monorepo",
+  "name": "changeset-demo",
+  "version": "0.0.0",
   "private": true,
-  "workspaces": [
-    "packages/ts-demo"
-  ],
+  "scripts": {
+    "dev": "next dev",
+    "dev:full": "./scripts/dev.sh",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "next": "14.0.4",
+    "react": "^18",
+    "react-dom": "^18"
+  },
   "devDependencies": {
-    "@changesets/cli": "^2.29.5"
+    "@changesets/cli": "^2.29.5",
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "autoprefixer": "^10.0.1",
+    "eslint": "^8",
+    "eslint-config-next": "14.0.4",
+    "postcss": "^8",
+    "tailwindcss": "^3.3.0",
+    "typescript": "^5"
   }
 }
