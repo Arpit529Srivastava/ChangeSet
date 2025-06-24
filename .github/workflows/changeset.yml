@@ -35,4 +35,6 @@ jobs:
       - run: git config user.email "github-actions[bot]@users.noreply.github.com"
       - run: git add .
       - run: git commit -m "Version Packages" || echo "No changes to commit"
+      - name: Set remote URL with token
+        run: git remote set-url origin https://x-access-token:${{ secrets.GH_TOKEN }}@github.com/${{ github.repository }}.git
       - run: git push 
