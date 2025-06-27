@@ -1,6 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import { useState, useEffect } from 'react'
 
 interface StatusIndicatorProps {
   status: 'healthy' | 'unhealthy' | 'checking' | 'unreachable'
@@ -13,6 +14,15 @@ export default function StatusIndicator({
   label, 
   size = 'md' 
 }: StatusIndicatorProps) {
+  const [currentTime, setCurrentTime] = useState(new Date())
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentTime(new Date())
+    }, 1000)
+    return () => clearInterval(timer)
+  }, [])
+
   const getStatusConfig = () => {
     switch (status) {
       case 'healthy':
@@ -74,6 +84,9 @@ export default function StatusIndicator({
     >
       <div className={`w-2 h-2 rounded-full mr-2 ${config.dotClass}`}></div>
       {label || status.charAt(0).toUpperCase() + status.slice(1)}
+      <span className="ml-2 text-xs opacity-75">
+        {currentTime.toLocaleTimeString()}
+      </span>
     </motion.div>
   )
 } 

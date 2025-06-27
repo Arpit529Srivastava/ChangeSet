@@ -8,6 +8,7 @@ import * as THREE from 'three'
 export default function ThreeBackground() {
   const ref = useRef<THREE.Points>(null)
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
+  const [time, setTime] = useState(0)
   const { camera } = useThree()
   
   const count = 8000
@@ -35,6 +36,8 @@ export default function ThreeBackground() {
   }, [])
 
   useFrame((state) => {
+    setTime(state.clock.elapsedTime)
+    
     if (ref.current) {
       // Smooth rotation based on time
       ref.current.rotation.x = Math.sin(state.clock.elapsedTime * 0.1) * 0.1
@@ -50,11 +53,17 @@ export default function ThreeBackground() {
     }
   })
 
+  // Dynamic color based on time
+  const getDynamicColor = () => {
+    const hue = (time * 10) % 360
+    return `hsl(${hue}, 70%, 80%)`
+  }
+
   return (
     <Points ref={ref} positions={positions} stride={3} frustumCulled={false}>
       <PointMaterial
         transparent
-        color="#ffffff"
+        color={getDynamicColor()}
         size={0.015}
         sizeAttenuation={true}
         depthWrite={false}

@@ -3,8 +3,16 @@ const readPackageUp = require('read-package-up');
 async function getChangesetContents(pullRequest, github) {
   try {
     // Get package.json to determine the package name
-    const packageResult = await readPackageUp();
-    const packageName = packageResult.packageJson.name || 'changeset-demo';
+    let packageName = 'changeset-demo'; // Default fallback
+    
+    try {
+      const packageResult = await readPackageUp();
+      if (packageResult && packageResult.packageJson && packageResult.packageJson.name) {
+        packageName = packageResult.packageJson.name;
+      }
+    } catch (packageError) {
+      console.warn('Could not read package.json, using default package name:', packageError.message);
+    }
     
     // Determine the type of change based on PR title
     let changeType = 'patch';
@@ -31,7 +39,15 @@ ${pullRequest.body || 'No description provided.'}
     return changesetContent;
   } catch (error) {
     console.error('Error generating changeset content:', error);
-    return null;
+    // Return a default changeset instead of null
+    return `---
+"changeset-demo": patch
+---
+
+${pullRequest.title || 'Auto-generated changeset'}
+
+${pullRequest.body || 'No description provided.'}
+`;
   }
 }
 
